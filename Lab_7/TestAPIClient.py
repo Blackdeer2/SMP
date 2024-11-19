@@ -4,10 +4,12 @@ from APIClient import APIClient
 
 class TestAPIClient(unittest.TestCase):
     def setUp(self):
+        """Sets up the APIClient instance for testing."""
         self.client = APIClient()
 
     @patch('requests.get')
     def test_get_data_success(self, mock_get):
+        """Tests the success of the get_data method."""
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = [{"id": 1, "title": "Test Post"}]
 
@@ -18,6 +20,7 @@ class TestAPIClient(unittest.TestCase):
 
     @patch('requests.get')
     def test_get_data_by_id_success(self, mock_get):
+        """Tests the success of the get_data_by_id method."""
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = {"id": 1, "title": "Test Post"}
 
@@ -28,6 +31,7 @@ class TestAPIClient(unittest.TestCase):
 
     @patch('requests.get')
     def test_get_all_users_success(self, mock_get):
+        """Tests the success of the get_all_users method."""
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = [{"id": 1, "name": "Leanne Graham"}]
 
@@ -38,6 +42,7 @@ class TestAPIClient(unittest.TestCase):
 
     @patch('requests.get')
     def test_get_user_by_id_success(self, mock_get):
+        """Tests the success of the get_user_by_id method."""
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = {"id": 1, "name": "Leanne Graham"}
 
@@ -48,6 +53,7 @@ class TestAPIClient(unittest.TestCase):
 
     @patch('requests.get')
     def test_get_all_comments_success(self, mock_get):
+        """Tests the success of the get_all_comments method."""
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = [{"id": 1, "postId": 1, "userId": 1, "comment": "Sample comment"}]
 
@@ -59,6 +65,7 @@ class TestAPIClient(unittest.TestCase):
 
     @patch('requests.get')
     def test_get_comment_by_id_success(self, mock_get):
+        """Tests the success of the get_comment_by_id method."""
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = {"id": 1, "postId": 1, "userId": 1, "comment": "Sample comment"}
 
