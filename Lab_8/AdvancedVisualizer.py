@@ -3,7 +3,16 @@ from Lab_8.BasicVisualizer import BasicVisualizer
 
 
 class AdvancedVisualizer(BasicVisualizer):
+    """AdvancedVisualizer class that extends BasicVisualizer to include scatter and bar chart plotting."""
+
     def plot_scatter(self, x_column, y_column):
+        """
+        Plots a scatter plot of the given columns.
+
+        Args:
+            x_column (str): The name of the column for the x-axis.
+            y_column (str): The name of the column for the y-axis.
+        """
         plt.figure(figsize=(8, 6))
         plt.scatter(self.data[x_column], self.data[y_column])
         plt.xlabel(x_column)
@@ -12,6 +21,13 @@ class AdvancedVisualizer(BasicVisualizer):
         plt.show()
 
     def plot_bar_chart(self, category_column, value_column):
+        """
+        Plots a bar chart of the average values grouped by the given category.
+
+        Args:
+            category_column (str): The name of the column representing the categories.
+            value_column (str): The name of the column representing the values to average.
+        """
         data_grouped = self.data.groupby(category_column)[value_column].mean()
         data_grouped.plot(kind='bar', figsize=(10, 5))
         plt.xlabel(category_column)

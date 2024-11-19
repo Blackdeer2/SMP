@@ -9,12 +9,20 @@ from UI.MenuBuilder import MenuBuilder
 
 
 class VisualizationApp:
+    """A class for visualizing and analyzing car data."""
+
     def __init__(self, filepath: str):
+        """Initializes the VisualizationApp with a data file path."""
         self.filepath = filepath
         self.prepared_data = self._prepare_data()
 
     def _prepare_data(self):
-        """Автоматичне завантаження, аналіз та підготовка даних."""
+        """
+        Loads, analyzes, and prepares data for visualization.
+
+        Returns:
+            Prepared data for visualization.
+        """
         print("Завантаження даних...")
         loader = DataLoader(self.filepath)
         data = loader.get_data()
@@ -29,23 +37,24 @@ class VisualizationApp:
         return preparer.prepare_data_for_visualization()
 
     def plot_line_chart(self):
-        """Побудова лінійного графіка."""
+        """Creates a line chart visualization."""
         visualizer = BasicVisualizer(self.prepared_data)
         visualizer.plot_line_chart('Mileage__c', 'Sale_Price__c')
 
     def plot_scatter_and_bar(self):
-        """Побудова точкового графіка та гістограми."""
+        """Creates a scatter plot and bar chart visualizations."""
         visualizer = AdvancedVisualizer(self.prepared_data)
         visualizer.plot_scatter('Mileage__c', 'Sale_Price__c')
         visualizer.plot_bar_chart('Engine_Power__c', 'Sale_Price__c')
 
     def plot_multiple(self):
-        """Побудова кількох графіків."""
+        """Creates multiple visualizations in a grid."""
         visualizer = MultiPlotVisualizer(self.prepared_data)
         visualizer.plot_multiple()
 
 
-def main():
+def run():
+    """Main function to run the visualization app."""
     filepath = "C:/VOVA/5 semester/SMP/calculator/Source/CarsCSV.csv"
     app = VisualizationApp(filepath)
 
@@ -59,3 +68,4 @@ def main():
     menu = MenuBuilder(menu_items)
     while True:
         menu.initialize()
+
