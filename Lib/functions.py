@@ -1,3 +1,5 @@
+from configs import global_value
+
 
 def addition(a,b):
     c = a + b
@@ -49,6 +51,33 @@ def show_history():
             return file.read()
     except FileNotFoundError:
         return "No history found."
+
+def choose_operator(first_operand, second_operand, operator):
+    try:
+        match operator:
+            case '+':
+                result = addition(first_operand, second_operand)
+            case '-':
+                result = subtraction(first_operand, second_operand)
+            case '/':
+                if second_operand == 0:
+                    raise ZeroDivisionError("Error: Division by zero is not possible.")
+                result = division(first_operand, second_operand)
+            case '*':
+                result = multiplication(first_operand, second_operand)
+            case '^':
+                result = power(first_operand, second_operand)
+            case 'sq':
+                if first_operand < 0:
+                    raise ValueError("Error: Negative number under the root.")
+                result = square_root(first_operand, second_operand)
+            case '%':
+                result = modulus(first_operand, second_operand)
+
+        return result
+    except (ZeroDivisionError, ValueError) as e:
+        print(e)
+        return None
 
 def show_menu():
     print("Main Menu")

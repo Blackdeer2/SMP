@@ -1,5 +1,4 @@
-import os
-from DAL import FileService
+from Lib import FileService
 from Lab_5.figures.Cube import Cube
 
 

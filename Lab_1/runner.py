@@ -30,26 +30,10 @@ def calculator():
                 second_operand = float(user_input)
 
             result = 0
-            match operator:
-                case '+':
-                    result = functions.addition(first_operand, second_operand)
-                case '-':
-                    result = functions.subtraction(first_operand, second_operand)
-                case '/':
-                    result = functions.division(first_operand, second_operand)
-                case '*':
-                    result = functions.multiplication(first_operand, second_operand)
-                case '^':
-                    result = functions.power(first_operand, second_operand)
-                case 'sq':
-                    result = functions.square_root(first_operand, second_operand)
-                case '%':
-                    result = functions.modulus(first_operand, second_operand)
-
+            result = functions.choose_operator(first_operand, second_operand, operator)
             print('Result: ', round(result, global_value.round_number))
 
             functions.log_history(first_operand, operator, second_operand, round(result, global_value.round_number))
-
             choice_memory = input(
                 'Would you like to store result in memory (MS), add to memory (M+), clear memory (MC), or skip? '
             ).upper()

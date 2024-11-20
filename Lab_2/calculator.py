@@ -61,26 +61,7 @@ class Calculator:
         This function handles errors like division by zero and invalid square roots.
         """
         try:
-            match operator:
-                case '+':
-                    result = functions.addition(first_operand, second_operand)
-                case '-':
-                    result = functions.subtraction(first_operand, second_operand)
-                case '/':
-                    if second_operand == 0:
-                        raise ZeroDivisionError("Error: Division by zero is not possible.")
-                    result = functions.division(first_operand, second_operand)
-                case '*':
-                    result = functions.multiplication(first_operand, second_operand)
-                case '^':
-                    result = functions.power(first_operand, second_operand)
-                case 'sq':
-                    if first_operand < 0:
-                        raise ValueError("Error: Negative number under the root.")
-                    result = functions.square_root(first_operand, second_operand)
-                case '%':
-                    result = functions.modulus(first_operand, second_operand)
-
+            result = functions.choose_operator(first_operand, second_operand, operator)
             # Log the history of the calculation
             functions.log_history(first_operand, operator, second_operand, round(result, global_value.round_number))
             return round(result, global_value.round_number)

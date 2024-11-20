@@ -1,7 +1,9 @@
 import random
 import string
 import unittest
-from BLL.classes.calculator import Calculator
+
+from Lab_2.calculator import Calculator
+
 
 class CalculatorDivisionUnitTests(unittest.TestCase):
     def test_division_of_two_positive_numbers(self):

@@ -1,7 +1,8 @@
 import random
 import string
 import unittest
-from BLL.classes.calculator import Calculator
+from Lab_2.calculator import Calculator
+
 
 class CalculatorMultiplicationUnitTests(unittest.TestCase):
     def test_multiplication_of_two_positive_numbers(self):
